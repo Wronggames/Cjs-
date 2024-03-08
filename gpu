@@ -1,0 +1,44 @@
+const GPU = {
+    canvas: null,
+    ctx: null,
+
+    initialize() {
+        // Create canvas element
+        this.canvas = document.createElement('canvas');
+        
+        // Set canvas size to match the dimensions of the webpage
+        this.canvas.width = window.innerWidth;
+        this.canvas.height = window.innerHeight;
+
+        // Append canvas element to the body of the webpage
+        document.body.appendChild(this.canvas);
+        
+        // Get 2D rendering context
+        this.ctx = this.canvas.getContext('2d');
+    },
+
+    clearCanvas() {
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    },
+
+    drawRectangle(x, y, width, height, color) {
+        this.ctx.fillStyle = color;
+        this.ctx.fillRect(x, y, width, height);
+    },
+
+    drawCircle(x, y, radius, color) {
+        this.ctx.beginPath();
+        this.ctx.arc(x, y, radius, 0, Math.PI * 2);
+        this.ctx.fillStyle = color;
+        this.ctx.fill();
+        this.ctx.closePath();
+    },
+
+    drawText(text, x, y, font, color) {
+        this.ctx.font = font;
+        this.ctx.fillStyle = color;
+        this.ctx.fillText(text, x, y);
+    },
+
+    // Add more drawing functions as needed...
+};
